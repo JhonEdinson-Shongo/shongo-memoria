@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Historia del almacenamiento: del disquete a la nube · Shongo</title>
+    <meta name="description" content="La evolución del almacenamiento de datos en siete objetos: disquete, disco duro, CD-ROM, DVD, memoria USB y la nube. Cómo funciona cada uno, contado en 3D." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#060607" />
+    <!--SEO-->
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23c9ff3b'/%3E%3Ctext x='16' y='24' font-family='Arial Black,sans-serif' font-weight='900' font-size='22' text-anchor='middle' fill='%23060607'%3ES%3C/text%3E%3C/svg%3E" />
+    <script>
+      // Theme before first paint: ?theme= in the URL, else the saved choice, else the system.
+      ;(function () {
+        var t = new URLSearchParams(location.search).get('theme')
+        if (t !== 'light' && t !== 'dark') try { t = localStorage.getItem('shongo-theme') } catch (e) {}
+        if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+        document.documentElement.dataset.theme = t
+      })()
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#c-byte">Saltar al contenido</a>
+    <canvas id="stage" aria-hidden="true"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="#inicio">
+        <span class="brand__seal" aria-hidden="true">S</span>
+        <span class="brand__name">Shongo</span>
+        <span class="sr-only">, volver al inicio</span>
+      </a>
+      <nav class="topbar__nav" aria-label="Secciones">
+        <a href="#c-byte"><span>01</span> Crónica</a>
+        <a href="#coleccion"><span>02</span> Colección</a>
+      </nav>
+      <div class="topbar__controls">
+        <button id="motion-toggle" class="theme-toggle motion-toggle" type="button" aria-pressed="false" aria-label="Pausar animaciones">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="motion-toggle__pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" />
+            <path class="motion-toggle__play" d="M8 5l11 7-11 7z" />
+          </svg>
+        </button>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="Tema claro">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle class="theme-toggle__disc" cx="12" cy="12" r="8.5" />
+            <path class="theme-toggle__half" d="M12 3.5a8.5 8.5 0 0 1 0 17z" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <nav class="rail" aria-label="Línea de tiempo">
+      <span class="rail__line" aria-hidden="true"><span class="rail__fill"></span></span>
+      <ol><!--RAIL--></ol>
+    </nav>
+
+    <main>
+      <section class="hero" id="inicio" data-shape="hero" data-layout="hero" aria-labelledby="hero-title">
+        <div class="hero__word" aria-hidden="true">MEMORIA</div>
+        <div class="hero__marks" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+        <div class="hero__top">
+          <p class="tag">Crónica 01 <b>Humano × Máquina</b></p>
+          <p class="mono hero__range">1971 <span>→</span> 2006</p>
+        </div>
+
+        <p class="hero__label hero__label--machine mono" aria-hidden="true"><i></i>Máquina <span>// silicio</span></p>
+        <p class="hero__label hero__label--human mono" aria-hidden="true"><i></i>Humano <span>// carbono</span></p>
+        <p class="hero__hint mono" aria-hidden="true">Acerca el cursor al espacio entre los dedos · clic para encender</p>
+        <div class="hud mono" aria-hidden="true"><span data-hud-x>X 0000</span><span data-hud-y>Y 0000</span></div>
+
+        <div class="hero__copy">
+          <h1 class="hero__title" id="hero-title">La chispa <em>de la memoria</em></h1>
+          <p class="sr-only">
+            Ilustración animada: una mano robótica de alambre y una mano humana a punto de tocarse con el
+            índice, como en La creación de Adán. Abajo, la historia del almacenamiento de datos, del disquete a la nube.
+          </p>
+          <p class="hero__lead">
+            Del disquete a la nube: cincuenta años guardando unos y ceros, contados con
+            <b data-count>110.000</b> partículas.
+          </p>
+        </div>
+
+        <a class="sticker" href="#c-byte">
+          <span class="sr-only">Desliza para comenzar</span>
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <defs><path id="sticker-ring" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0" /></defs>
+            <text><textPath href="#sticker-ring" textLength="285" lengthAdjust="spacing">DESLIZA ✺ DESLIZA ✺ DESLIZA ✺</textPath></text>
+          </svg>
+          <span class="sticker__arrow" aria-hidden="true">↓</span>
+        </a>
+
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee__track">
+            <span>Del disquete a la nube ✺ 1971 — 2006 ✺ Humano × máquina ✺ Siete formas de recordar ✺ Unos y ceros ✺ </span>
+            <span>Del disquete a la nube ✺ 1971 — 2006 ✺ Humano × máquina ✺ Siete formas de recordar ✺ Unos y ceros ✺ </span>
+          </div>
+        </div>
+      </section>
+
+      <!--CHAPTERS-->
+
+      <section class="collection" id="coleccion" data-shape="cloud" data-layout="fade" aria-labelledby="t-coleccion">
+        <div class="collection__head">
+          <p class="tag">Epílogo <b>La colección</b></p>
+          <h2 class="collection__title" id="t-coleccion">Siete objetos, <em>cincuenta años</em></h2>
+          <p class="collection__lead">Abre cada ficha para ver sus materiales, cómo funciona y sus datos técnicos.</p>
+        </div>
+        <div class="carousel">
+          <ul class="carousel__track" aria-label="Sistemas de almacenamiento"><!--CARDS--></ul>
+          <div class="carousel__controls">
+            <div class="carousel__progress" aria-hidden="true"><span></span></div>
+            <button class="carousel__btn" type="button" data-dir="-1" aria-label="Anterior">←</button>
+            <button class="carousel__btn" type="button" data-dir="1" aria-label="Siguiente">→</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" aria-labelledby="footer-title"><!--FOOTER-->
+    </footer>
+
+    <dialog id="spec-modal" class="modal" aria-labelledby="modal-title" data-lenis-prevent>
+      <div class="modal__inner">
+        <button class="modal__close" type="button" aria-label="Cerrar ficha">✕</button>
+        <div class="modal__media"><canvas class="modal__canvas" aria-hidden="true"></canvas></div>
+        <div class="modal__body"></div>
+      </div>
+    </dialog>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
